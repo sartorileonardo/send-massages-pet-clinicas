@@ -16,7 +16,7 @@ function inputMessage() {
     const nomePet = prompt('Digite o nome do pet:').trim();
     const nomeVacina = prompt('Digite o nome da vacina:').trim();
     const cumprimentoDoDia = getCumprimentoDoDia();
-    const inputMessage = `${cumprimentoDoDia}, ${nomePessoa}, estamos passando para lembrar da vacina ${nomeVacina} do seu animalzinho ${nomePet}.\n\nQualquer dúvida ficamos à disposição!`;
+    const inputMessage = `${cumprimentoDoDia} ${nomePessoa}, \n\nEstamos passando para lembrar da vacina ${nomeVacina} do seu animalzinho ${nomePet}.\n\nQualquer dúvida ficamos à disposição!`;
     return encodeURIComponent(inputMessage);
 }
 
