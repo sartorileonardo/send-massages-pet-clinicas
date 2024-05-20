@@ -22,7 +22,10 @@ function inputMessage() {
 
 function sendMessages() {
     const textNumbers = document.getElementById('inputNumbers').value;
-    const cellphoneNumbers = textNumbers.split('\n').map(number => number.trim()).filter(number => number);
+    const cellphoneNumbers = textNumbers.split('\n')
+    .map(number => number.trim())
+    .map(number => "+55".concat(number))
+    .filter(number => number);
 
     if (cellphoneNumbers.length === 0) {
         alert('Por favor, insira pelo menos um número de celular.');
