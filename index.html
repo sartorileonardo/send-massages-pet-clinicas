@@ -1,10 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Replicador de mensagens de WhatsApp para Pet Clínicas</title>
+    <title>Replicador de mensagens(lembrete de vacina) de WhatsApp para Pet Clínicas</title>
     <style>
         body {
             display: flex;
@@ -15,19 +15,23 @@
             margin: 0;
             font-family: Arial, sans-serif;
         }
+
         h2 {
             text-align: center;
         }
+
         textarea {
             width: 100%;
             height: 100px;
             margin-bottom: 20px;
         }
+
         button {
             padding: 10px 20px;
             font-size: 16px;
             cursor: pointer;
         }
+
         footer {
             position: fixed;
             bottom: 0;
@@ -38,10 +42,13 @@
         }
     </style>
 </head>
-<body>  
+
+<body>
     <h2>Replicador de mensagens de WhatsApp para Pet Clínicas</h2>
-    <img src="https://f.hubspotusercontent10.net/hubfs/5663619/Triggered%20Mail-%20V2.gif" style="width: 35%; height: 150px;">
-    <p>Para utilizar o sistema basta inserir os números de celular separados por vírgula e pulando linha a linha e depois clicar no botão Enviar Mensagens, fácil né?!</p>
+    <img src="https://f.hubspotusercontent10.net/hubfs/5663619/Triggered%20Mail-%20V2.gif"
+        style="width: 35%; height: 150px;">
+    <p>Para utilizar o sistema basta inserir os números de celular separados por vírgula e pulando linha a linha e
+        depois clicar no botão Enviar Mensagens, fácil né?!</p>
     <form>
         <textarea id="inputNumbers" placeholder="Insira os números de celular (um a cada linha), exemplo: +554812345678,
         +554898764321,"></textarea>
@@ -53,17 +60,31 @@
     </footer>
 
     <script>
+        function getCumprimentoDoDia() {
+            const now = new Date();
+            const hour = now.getHours();
+
+            if (hour >= 6 && hour < 12) {
+                return "Bom dia";
+            } else if (hour >= 12 && hour < 18) {
+                return "Boa tarde";
+            } else {
+                return "Boa noite";
+            }
+        }
+
         function inputMessage() {
             const nomePessoa = prompt('Digite o nome da pessoa:').trim();
             const nomePet = prompt('Digite o nome do pet:').trim();
-            const nomeMedicamento = prompt('Digite o nome do medicamento:').trim();
-            const inputMessage = `Bom dia, ${nomePessoa}, estamos passando para lembrar da vacina ${nomeMedicamento} do seu animalzinho ${nomePet}.\nQualquer dúvida ficamos à disposição!`;
+            const nomeVacina = prompt('Digite o nome da vacina:').trim();
+            const cumprimentoDoDia = getCumprimentoDoDia();
+            const inputMessage = `${cumprimentoDoDia}, ${nomePessoa}, estamos passando para lembrar da vacina ${nomeVacina} do seu animalzinho ${nomePet}.\nQualquer dúvida ficamos à disposição!`;
             return encodeURIComponent(inputMessage);
         }
 
         function sendMessages() {
             const textNumbers = document.getElementById('inputNumbers').value;
-            
+
             const cellphoneNumbers = textNumbers.split('\n').map(number => number.trim()).filter(number => number);
 
             if (cellphoneNumbers.length === 0) {
@@ -84,4 +105,5 @@
         }
     </script>
 </body>
+
 </html>
